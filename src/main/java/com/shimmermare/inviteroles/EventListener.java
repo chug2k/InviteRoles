@@ -216,7 +216,7 @@ public class EventListener extends ListenerAdapter
         Message message = event.getMessage();
         PrivateChannel channel = message.getPrivateChannel();
 
-        Guild guild = bot.getServerInstance(542666886899302400).getServer();
+        Guild guild = bot.getServerInstance(542666886899302400L).getServer();
         //Send thank you message if this is first time feedback
         // channel.getHistoryBefore(message, 1).queue(history ->
         // {
@@ -228,12 +228,12 @@ public class EventListener extends ListenerAdapter
         //     }
         // });
         if(message.getContentStripped().toLowerCase().contains("zoomer")) {
-            Role zoomerRole = guild.getRoleById(691178944585793576);
+            Role zoomerRole = guild.getRoleById(691175235528949781L);
             guild.addRoleToMember(author, zoomerRole).reason("Invite to Zoomer by DM").queue();
             channel.sendMessage("Great, you've been added to Zoomer.").queue();
         }
         if(message.getContentStripped().toLowerCase().contains("visor")) {
-            Role visorRole = guild.getRoleById(691178944585793576);
+            Role visorRole = guild.getRoleById(691178944585793576L);
             guild.addRoleToMember(author, visorRole).reason("Invite to Visor by DM").queue();
             channel.sendMessage("Great, you've been added to Visor.").queue();        
         }
