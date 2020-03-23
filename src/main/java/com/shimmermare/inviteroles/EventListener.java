@@ -216,15 +216,28 @@ public class EventListener extends ListenerAdapter
         Message message = event.getMessage();
         PrivateChannel channel = message.getPrivateChannel();
 
+        Guild guild = bot.getServerInstance(542666886899302400).getServer();
         //Send thank you message if this is first time feedback
-        channel.getHistoryBefore(message, 1).queue(history ->
-        {
-            if (history.getRetrievedHistory().isEmpty())
-            {
-                channel.sendMessage("**Thank you for feedback!** " +
-                        "\n• If you found a bug or have a suggestion, please create an issue at GitHub page: https://github.com/Shimmermare/InviteRoles " +
-                        "\n• If you want to contact creator, use PM: <@474857988075683850>").queue();
-            }
-        });
+        // channel.getHistoryBefore(message, 1).queue(history ->
+        // {
+        //     if (history.getRetrievedHistory().isEmpty())
+        //     {
+        //         channel.sendMessage("**Thank you for feedback!** " +
+        //                 "\n• If you found a bug or have a suggestion, please create an issue at GitHub page: https://github.com/Shimmermare/InviteRoles " +
+        //                 "\n• If you want to contact creator, use PM: <@474857988075683850>").queue();
+        //     }
+        // });
+        if(message.getContentStripped().toLowerCase().contains("zoomer")) {
+            Role zoomerRole = guild.getRoleById(691178944585793576);
+            guild.addRoleToMember(author, zoomerRole).reason("Invite to Zoomer by DM").queue();
+            channel.sendMessage("Great, you've been added to Zoomer.").queue();
+        }
+        if(message.getContentStripped().toLowerCase().contains("visor")) {
+            Role visorRole = guild.getRoleById(691178944585793576);
+            guild.addRoleToMember(author, visorRole).reason("Invite to Visor by DM").queue();
+            channel.sendMessage("Great, you've been added to Visor.").queue();        
+        }
+        
+
     }
 }
